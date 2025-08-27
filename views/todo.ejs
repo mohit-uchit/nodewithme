@@ -1,0 +1,42 @@
+<%- include('partials/header.ejs') %>
+<h2>TODO LIST</h2>
+<form id="taskForm" onsubmit="saveTask()">
+  <input type="text" id="todoInput" placeholder="Enter a task" required />
+  <button id="submitButton" type="submit">Add Task</button>
+</form>
+<ul id="savedTasks">
+  <script>
+    function saveTask() {
+      const existing = localStorage.getItem('tasks');
+      const element = document.getElementById('todoInput').value;
+      const parsedTasks = JSON.parse(existing) || [];
+      parsedTasks.push(element);
+      localStorage.setItem('tasks', JSON.stringify(parsedTasks));
+      displayTasks();
+    }
+
+    function displayTasks() {
+      const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      const taskList = document.getElementById('savedTasks');
+      taskList.innerHTML = '';
+      savedTasks.forEach((task, index) => {
+        const li = document.createElement('li');
+        li.textContent = `Task : ${task}, TaskNumber: ${Math.floor(
+          Math.random() + index,
+        )} `;
+        taskList.appendChild(li);
+        const button = document.createElement('button');
+        button.innerText = 'Delete';
+        button.onclick = deleteTask();
+        taskList.appendChild(button);
+      });
+
+      function deleteTask() {
+         
+      }
+    }
+
+    window.onload = displayTasks;
+  </script>
+  <%- include('partials/footer')%>
+</ul>

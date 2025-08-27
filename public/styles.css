@@ -1,0 +1,62 @@
+h1 { color: blue} /*Tag Selector*/
+
+.bikhari { color: red} /* Class Selector*/
+
+#abouthumai {  /* ID selector */
+  color: cyan
+}
+
+body{
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#navbar{
+  margin: 20px;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#navEl{
+  padding: 10px;
+  background-color: rgb(104, 104, 234);
+  color: white;
+  border-radius: 10px;
+}
+
+#savedTasks li{
+  margin: 10px;
+  background-color: rgb(82, 82, 198);
+  color: white;
+  padding: 20px;
+  width: 500px;
+  border-radius: 12px;
+  cursor: grab;
+}
+
+#taskForm {
+  margin: 30px;
+  padding: 30px;
+  background-color: aquamarine;
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+#todoInput {
+   margin: 10px;
+   padding: 10px;
+   background-color: rgb(182, 227, 245);
+}
+
+#submitButton {
+  margin-left: 20px;
+  height: 37px;
+  margin-top: 10px;
+  color: rgb(46, 25, 121);
+  background-color: aqua;
+  border-radius: 20px;
+}

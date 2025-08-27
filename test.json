@@ -1,0 +1,65 @@
+{
+  "yaml.schemas": {
+    "file:///Users/darky/.vscode/extensions/atlassian.atlascode-3.8.0/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+  "git.ssh.defaultKeyPath": "~/.ssh/id_rsa_mohituchit",
+  "atlascode.bitbucket.enabled": true,
+  "atlascode.jira.enabled": false,
+  "editor.accessibilitySupport": "off",
+  "atlascode.helpExplorerEnabled": false,
+  "security.workspace.trust.banner": "never",
+  "files.autoSave": "afterDelay",
+  "terminal.integrated.smoothScrolling": true,
+  "terminal.integrated.mouseWheelZoom": true,
+  "git.autofetch": true,
+  "editor.mouseWheelZoom": true,
+  "window.zoomLevel": 1,
+  "security.workspace.trust.untrustedFiles": "open",
+  "explorer.confirmDelete": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "git.enableSmartCommit": true,
+  "explorer.confirmDragAndDrop": false,
+  "[javascript]": {
+    "editor.maxTokenizationLineLength": 2500,
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "prettier.configPath": "/Users/darky/Documents/jobPilot-be/.prettierrc",
+  "workbench.iconTheme": "helium-icon-theme",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.fontFamily": "Fira Code",
+  "terminal.integrated.fontLigatures.enabled": true,
+  "terminal.integrated.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "editor.tabSize": 2,
+  "chat.agent.enabled": true,
+  "database-client.autoSync": true,
+  "amazonQ.suppressPrompts": {
+    "amazonQChatDisclaimer": true
+  },
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": true,
+    "javascript": true,
+    "typescriptreact": false
+  },
+  "github.copilot.chat.codesearch.enabled": true,
+  "github.copilot.chat.agent.thinkingTool": true,
+  "github.copilot.chat.editor.temporalContext.enabled": true,
+  "github.copilot.chat.generateTests.codeLens": true,
+  "github.copilot.chat.edits.temporalContext.enabled": true,
+  "github.copilot.chat.languageContext.fix.typescript.enabled": true,
+  "github.copilot.chat.languageContext.inline.typescript.enabled": true,
+  "github.copilot.chat.languageContext.typescript.enabled": true,
+  "github.copilot.chat.search.keywordSuggestions": true,
+  "github.copilot.chat.testGeneration.instructions": [],
+  "terminal.integrated.fontSize": 15,
+  "diffEditor.codeLens": true,
+  "github.copilot.chat.scopeSelection": true,
+  "workbench.settings.applyToAllProfiles": [
+    
+  ],
+}

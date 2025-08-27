@@ -1,0 +1,57 @@
+<%- include('partials/header.ejs')%>
+
+<h2>Form Page</h2>
+<form id="userForm" action="/form/submit" method="POST" onsubmit="saveUser()">
+  <input id="inputName" type="text" name="name" placeholder="Enter Name" required>
+  <input id="inputEmail" type="email" name="email" placeholder="Enter Email" required>
+  <button type="submit">Submit</button>
+</form>
+
+<% if(typeof submitted !== 'undefined' && submitted){ %>
+  <p>Form Submitted! Name: <%= name %> Email: <%= email %></p>
+<% } %>
+
+<h3>Saved Users (Local Storage)</h3>
+<ul id="savedUsers"></ul>
+
+<script>
+  // Save user to localStorage
+  function saveUser() {
+    const name = document.getElementById("inputName").value;
+    const email = document.getElementById("inputEmail").value;
+
+    // Get existing users or create empty array
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    
+    // Add new user
+    users.push({ name, email });
+
+    // Save back to localStorage
+    localStorage.setItem("users", JSON.stringify(users));
+
+    // Refresh displayed users
+    displayUsers();
+  }
+
+  // Get and display users
+  function displayUsers() {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const userList = document.getElementById("savedUsers");
+
+    // Clear existing list
+    userList.innerHTML = "";
+
+    // Add list items
+    users.forEach((user, index) => {
+      const li = document.createElement("li");
+      li.textContent = `${user.name} - ${user.email}`;
+      userList.appendChild(li);
+
+    });
+  }
+
+  // Load users when page loads
+  window.onload = displayUsers;
+</script>
+
+<%- include('partials/footer.ejs')%>
