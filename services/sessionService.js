@@ -52,12 +52,26 @@ const rotateRefresh = async(refreshPlain) => {
    })
 
    return { userId, accessToken, refreshToken: newPlain}
+};
+
+const revokeRefresh = async(refreshPlain) => {
+    if(!refreshPlain){
+      return;
+    }
+    const tokenHash = sha256(refreshPlain);
+    await RefreshToken.deleteOne({ tokenHash })
+};
+
+const revokeAllForUser = async(userId) => {
+   await RefreshToken.deleteMany({ userId })
 }
 
 
 module.exports = {
    issueSession,
    rotateRefresh,
+   revokeRefresh,
+   revokeAllForUser,
 }
 
 

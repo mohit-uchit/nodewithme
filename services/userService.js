@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const authHelper = require('../helpers/authHelper');
+const sessionService = require('./sessionService')
 
 const register = async data => {
   const existingUser = await User.findOne({ email: data.email }, { email: 1 });
@@ -25,7 +26,7 @@ const register = async data => {
 
 const login = async data => {
   const existingUser = await User.findOne(
-    { email: data.email },
+    { email: (data.email).toLowerCase() },
     { email: 1, password: 1 },
   );
   if (!existingUser) {
@@ -38,44 +39,30 @@ const login = async data => {
     throw new Error('Incorrect Password');
   }
 
-  const token = await authHelper.signAccessToken({
-    id: existingUser._id,
-  });
+  const session = await sessionService.issueSession(existingUser);
 
   return {
     id: existingUser._id,
-    token,
+    tokens: {
+      accessToken: session.accessToken,
+      refreshToken: session.refreshToken
+    },
   };
 };
 
-const updatePassword = async (token, data) => {
-  if (!token) {
-    throw new Error('Missing Token.')
+const updatePassword = async (userId, data) => {
+  const existingUser = await User.findById(userId);
+  if(!existingUser){
+    throw new Error('User do not exists')
   }
-
-  const verify = authHelper.verifyAccessToken(token);
-  if (!verify) {
-    throw new Error('Unauthorised Access')
-  }
-
-  const existingData = await User.findById(verify.id);
-
-  if (!existingData) {
-    throw new Error('User does not exist')
-  }
-
   const updatedUser = await User.updateOne({
-    _id: verify.id
+    _id: userId
   }, {
     password: await bcrypt.hash(data.password, 10)
   })
   
   console.log(await bcrypt.hash(data.password, 10))
   return updatedUser
-}
-
-const logout = async () => {
-
 }
 
 module.exports = {
