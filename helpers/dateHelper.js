@@ -7,9 +7,9 @@ const moment = require('moment');
  * @returns {string} Converted date in the desired format.
  */
 const formatDate = (date, dateFormat) => {
-  return moment(date).format(dateFormat)
-}
+  return moment(date).format(dateFormat);
+};
 
 module.exports = {
-   formatDate
-}
+  formatDate,
+};
