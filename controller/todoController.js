@@ -10,9 +10,23 @@ const createTodo = async (req, res) => {
   }
 };
 
-const listTodo = async (req, res) => {};
+const listTodo = async (req, res) => {
+  try {
+    const data = await todoService.listTodo(req.user.id);
+    return responseHandle.handleOk(res, data);
+  } catch (error) {
+    return responseHandle.handleError(res, error);
+  }
+};
 
-const getTodoById = async (req, res) => {};
+const getTodoById = async (req, res) => {
+  try {
+    const data = await todoService.getTodoById(req.user.id, req.params.id);
+    return responseHandle.handleOk(res, data);
+  } catch (error) {
+    return responseHandle.handleError(res, error);
+  }
+};
 
 const updateTodo = async (req, res) => {};
 
