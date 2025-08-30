@@ -1,6 +1,6 @@
-const User = require('../models/user');
+const User = require('../../models/user');
 const bcrypt = require('bcrypt');
-const authHelper = require('../helpers/authHelper');
+const authHelper = require('../../helpers/authHelper');
 const sessionService = require('./sessionService')
 
 const register = async data => {
@@ -52,7 +52,7 @@ const login = async data => {
 
 const updatePassword = async (userId, data) => {
   const existingUser = await User.findById(userId);
-  if(!existingUser){
+  if (!existingUser) {
     throw new Error('User do not exists')
   }
   const updatedUser = await User.updateOne({
@@ -60,8 +60,6 @@ const updatePassword = async (userId, data) => {
   }, {
     password: await bcrypt.hash(data.password, 10)
   })
-  
-  console.log(await bcrypt.hash(data.password, 10))
   return updatedUser
 }
 

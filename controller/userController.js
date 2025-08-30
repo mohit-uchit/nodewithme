@@ -1,6 +1,6 @@
 const responseHandle = require('../helpers/responseHandle');
-const userService = require('../services/userService');
-const sessionService = require('../services/sessionService');
+const userService = require('../services/auth/userService');
+const sessionService = require('../services/auth/sessionService');
 const authHelper = require('../helpers/authHelper');
 const tokenDenyList = require('../helpers/tokenDenyList');
 
@@ -32,7 +32,6 @@ const login = async (req, res) => {
 
 const updatePassword = async (req, res) => {
   try {
-    console.log(req.user)
     const data = await userService.updatePassword(
       req.user.id,
       req.body,
